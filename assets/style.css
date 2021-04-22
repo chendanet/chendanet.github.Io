@@ -1,0 +1,21 @@
+body {
+    background-color: #A87439;
+}
+
+h1, h2 {
+    color:rgb(246, 228, 183);
+    text-align: center;
+}
+
+#inputTitleMovie {
+width: 760px
+;
+}
+
+
+#searchMovie {
+    color:rgb(246, 228, 183);
+    background-color:rgb(136, 26, 54);
+    outline: none;
+    
+}
