@@ -1,6 +1,6 @@
 const API_KEY = 'b167abc3';
 
-const url =`https://www.omdbapi.com/?apikey${API_KEY}`;
+const url =`https://www.omdbapi.com/?apikey=${API_KEY}`;
 
 
 
