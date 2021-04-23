@@ -1,6 +1,6 @@
 const API_KEY = 'b167abc3';
 
-const url ='http://www.omdbapi.com/?apikey=b167abc3';
+const url =`http://www.omdbapi.com/?apikey${API_KEY}`;
 
 
 
@@ -17,9 +17,9 @@ buttonSearch.onclick = function(event) {
     fetch(newUrl) //recuperer donnée asynchrone à partir de l'URL
         .then((res) => res.json()) //resultat en json 
         .then((dataomdb) => {
-            const tableauFilms = dataomdb.Search;
+            const tableauFilms = dataomdb.Search; // Search est un élément dans la console
 
-            // si search est undefined, ca veut dire que l'api n'a trouvé aucun film correspondant
+            // si Search est undefined, ca veut dire que l'api n'a trouvé aucun film correspondant
             if (tableauFilms === undefined) {
                 return []; // on renvoit une liste vide au prochain .then
             }
@@ -28,7 +28,7 @@ buttonSearch.onclick = function(event) {
             // càd que l'on va exécuter un fetch pour chaque film du tableau
             return Promise.all(
                 tableauFilms.map(film => {
-                    return fetch(`http://www.omdbapi.com/?apikey=b167abc3&i=${ film.imdbID }&plot=full`)
+                    return fetch(`${url}&i=${ film.imdbID }&plot=full`)
                         .then((res) => res.json()) //resultat en json 
                 })
             );
@@ -62,7 +62,7 @@ buttonSearch.onclick = function(event) {
                         <div class="card-body">
                             <h5 class="card-title">${ film.Title }</h5>
                             <p class="card-text">${ film.Year }</p>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#film-${ film.imdbID }">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#film-${ film.imdbID }">
                                 Read more
                             </button>
 
@@ -96,4 +96,3 @@ buttonSearch.onclick = function(event) {
     console.log('Ce que tu as tapé:', value);
 }
 
- 
